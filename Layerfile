@@ -1,0 +1,15 @@
+#This is an example webapp.io configuration for React!
+FROM conpagoaus/base-node:v1.0.5
+
+# To note: Layerfiles create entire VMs, *not* containers!
+
+# node is a memory hog
+MEMORY 2G
+
+COPY . .
+RUN BACKGROUND python3 -m http.server --binding 0.0.0.0 8000
+
+# Create a unique link to share the app in this runner.
+# Every time someone clicks the link, we'll wake up this staging server.
+EXPOSE WEBSITE 8000
+
